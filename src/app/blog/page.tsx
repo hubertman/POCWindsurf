@@ -89,7 +89,7 @@ export default function Blog() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div className="order-2 lg:order-1">
                 <img 
-                  src="/api/placeholder/600/400" 
+                  src="https://picsum.photos/seed/nextjs15/600/400.jpg" 
                   alt={featuredPost.title} 
                   className="w-full h-auto rounded-lg shadow-lg"
                 />
@@ -99,9 +99,12 @@ export default function Blog() {
                 <p className="text-gray-600 mb-6 leading-relaxed">
                   {featuredPost.excerpt}
                 </p>
-                <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors">
+                <Link 
+                  href={`/blog/${featuredPost.id}`}
+                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+                >
                   Leer más
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -116,7 +119,7 @@ export default function Blog() {
                   <div className="flex gap-4">
                     <div className="flex-shrink-0">
                       <img 
-                        src="/api/placeholder/150/150" 
+                        src={`https://picsum.photos/seed/post${post.id}/150/150.jpg`}
                         alt={post.title}
                         className="w-24 h-24 rounded-md object-cover"
                       />
@@ -124,9 +127,12 @@ export default function Blog() {
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold text-gray-900 mb-2">{post.title}</h3>
                       <p className="text-gray-600 text-sm mb-3 line-clamp-2">{post.excerpt}</p>
-                      <button className="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors">
+                      <Link 
+                        href={`/blog/${post.id}`}
+                        className="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors"
+                      >
                         Leer
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

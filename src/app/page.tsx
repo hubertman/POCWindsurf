@@ -71,7 +71,7 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div className="order-2 lg:order-1">
                 <img 
-                  src="/api/placeholder/500/400" 
+                  src="https://picsum.photos/seed/aboutme/500/400.jpg" 
                   alt="About me" 
                   className="w-full h-auto rounded-lg shadow-lg"
                 />
@@ -118,7 +118,7 @@ export default function Home() {
                   <div key={post.id} className="bg-white rounded-lg shadow-md p-4 flex gap-4">
                     <div className="flex-shrink-0">
                       <img 
-                        src="/api/placeholder/100/100" 
+                        src={`https://picsum.photos/seed/homepost${post.id}/100/100.jpg`}
                         alt={post.title}
                         className="w-20 h-20 rounded-md object-cover"
                       />

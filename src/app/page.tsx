@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Navigation from '@/components/Navigation';
 
 interface BlogPost {
   id: number;
@@ -40,29 +41,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex-shrink-0">
-              <span className="text-2xl font-bold text-gray-900">MyLogo</span>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <Link href="/" className="text-gray-900 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">
-                  Home
-                </Link>
-                <Link href="/about" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
-                  About
-                </Link>
-                <Link href="/blog" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
-                  Blog
-                </Link>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </header>
+      <Navigation />
 
       <main>
         {/* About Section */}
@@ -107,9 +86,12 @@ export default function Home() {
               <div className="bg-white rounded-lg shadow-md p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{featuredPost.title}</h3>
                 <p className="text-gray-600 mb-4">{featuredPost.excerpt}</p>
-                <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                <Link 
+                  href={`/blog/${featuredPost.id}`}
+                  className="text-blue-600 hover:text-blue-700 font-medium text-sm"
+                >
                   Leer más
-                </button>
+                </Link>
               </div>
 
               {/* Recent Posts List */}
@@ -126,9 +108,12 @@ export default function Home() {
                     <div className="flex-1">
                       <h4 className="text-lg font-semibold text-gray-900 mb-2">{post.title}</h4>
                       <p className="text-gray-600 text-sm mb-2">{post.excerpt}</p>
-                      <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                      <Link 
+                        href={`/blog/${post.id}`}
+                        className="text-blue-600 hover:text-blue-700 font-medium text-sm"
+                      >
                         Leer
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 ))}

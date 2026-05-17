@@ -1,41 +1,9 @@
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
+import { getBlogPosts } from '@/lib/api';
 
-interface BlogPost {
-  id: number;
-  title: string;
-  summary: string;
-  excerpt: string;
-}
-
-const blogPosts: BlogPost[] = [
-  {
-    id: 1,
-    title: "Getting Started with Next.js 15",
-    summary: "Learn the fundamentals of Next.js 15 and its new features",
-    excerpt: "Discover how to build modern web applications with the latest version of Next.js, including App Router and Server Components."
-  },
-  {
-    id: 2,
-    title: "TypeScript Best Practices",
-    summary: "Essential TypeScript patterns for better code",
-    excerpt: "Explore TypeScript patterns that will improve your code quality and developer experience."
-  },
-  {
-    id: 3,
-    title: "Responsive Design with Tailwind",
-    summary: "Creating beautiful responsive layouts",
-    excerpt: "Master Tailwind CSS utilities to create stunning responsive designs that work on all devices."
-  },
-  {
-    id: 4,
-    title: "Modern React Hooks",
-    summary: "Advanced patterns and use cases",
-    excerpt: "Deep dive into React Hooks and learn advanced patterns for building complex applications."
-  }
-];
-
-export default function Home() {
+export default async function Home() {
+  const blogPosts = await getBlogPosts();
   const featuredPost = blogPosts[0];
   const recentPosts = blogPosts.slice(1, 4);
 

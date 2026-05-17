@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import React from 'react';
 import Navigation from '@/components/Navigation';
-import { blogPosts } from '@/lib/data';
+import { getBlogPosts } from '@/lib/api';
 
-export default function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
-  // Find the post by ID (convert slug to number)
-  const resolvedParams = React.use(params);
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
   const postId = parseInt(resolvedParams.slug);
+  const blogPosts = await getBlogPosts();
   const currentPost = blogPosts.find(post => post.id === postId) || blogPosts[0];
   
   // Get related posts (exclude current post, limit to 6)

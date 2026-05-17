@@ -1,59 +1,9 @@
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
+import { getBlogPosts } from '@/lib/api';
 
-interface BlogPost {
-  id: number;
-  title: string;
-  summary: string;
-  excerpt: string;
-}
-
-const blogPosts: BlogPost[] = [
-  {
-    id: 1,
-    title: "Getting Started with Next.js 15",
-    summary: "Learn the fundamentals of Next.js 15 and its new features",
-    excerpt: "Discover how to build modern web applications with the latest version of Next.js, including App Router and Server Components. This comprehensive guide covers everything from setup to deployment."
-  },
-  {
-    id: 2,
-    title: "TypeScript Best Practices",
-    summary: "Essential TypeScript patterns for better code",
-    excerpt: "Explore TypeScript patterns that will improve your code quality and developer experience. Learn advanced typing techniques and common pitfalls to avoid."
-  },
-  {
-    id: 3,
-    title: "Responsive Design with Tailwind",
-    summary: "Creating beautiful responsive layouts",
-    excerpt: "Master Tailwind CSS utilities to create stunning responsive designs that work on all devices. From mobile-first approach to complex grid systems."
-  },
-  {
-    id: 4,
-    title: "Modern React Hooks",
-    summary: "Advanced patterns and use cases",
-    excerpt: "Deep dive into React Hooks and learn advanced patterns for building complex applications. Custom hooks, performance optimization, and state management."
-  },
-  {
-    id: 5,
-    title: "Building Scalable APIs",
-    summary: "RESTful design principles and implementation",
-    excerpt: "Learn how to design and implement robust APIs that can scale with your application. Best practices for authentication, error handling, and documentation."
-  },
-  {
-    id: 6,
-    title: "Testing Strategies for React Apps",
-    summary: "Comprehensive testing approach",
-    excerpt: "From unit tests to integration tests, learn how to create a solid testing strategy for your React applications using modern testing tools and frameworks."
-  },
-  {
-    id: 7,
-    title: "Performance Optimization",
-    summary: "Making your web apps lightning fast",
-    excerpt: "Discover techniques to optimize your web application performance, including code splitting, lazy loading, and caching strategies."
-  }
-];
-
-export default function Blog() {
+export default async function Blog() {
+  const blogPosts = await getBlogPosts();
   const featuredPost = blogPosts[0];
   const gridPosts = blogPosts.slice(1, 7);
 
